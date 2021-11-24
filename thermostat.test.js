@@ -11,4 +11,15 @@ describe("Thermostat", () => {
     let thermostat = new Thermostat();
     expect(thermostat.getTemperature()).toBe(20);
   });
+
+  it('can increase tempreture by 1', () => {
+    let thermostat = new Thermostat();
+    expect(thermostat.up()).toBe(21);
+  });
+
+  it('can decrease tempreture by 1', () => {
+    let thermostat = new Thermostat();
+    expect(thermostat.down()).toBe(19);
+  });
+
 });
