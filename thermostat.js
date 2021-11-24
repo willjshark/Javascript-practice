@@ -1,5 +1,3 @@
-const { toThrowErrorMatchingSnapshot } = require("jest-snapshot");
-
 class Thermostat {
   constructor() {
     this.temperature = 20;
@@ -9,26 +7,19 @@ class Thermostat {
 
   getTemperature = () => this.temperature;
 
-  setPowerSavingMode = (onOrOff) => {
-    if (onOrOff) {
-      this.maximum = 25;
-    } else {
-      this.maximum = 32;
-    }
-  };
+  setPowerSavingMode = (onOrOff) =>
+    onOrOff ? (this.maximum = 25) : (this.maximum = 32);
 
   up = () => {
-    if (this.temperature === this.maximum) {
-      return;
-    }
-    this.temperature += 1;
+    this.temperature === this.maximum
+      ? this.temperature
+      : (this.temperature += 1);
   };
 
   down = () => {
-    if (this.temperature === this.minimum) {
-      return;
-    }
-    this.temperature -= 1;
+    this.temperature === this.minimum
+      ? this.temperature
+      : (this.temperature -= 1);
   };
 
   reset = () => (this.temperature = 20);

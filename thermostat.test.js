@@ -1,58 +1,50 @@
 const Thermostat = require("./thermostat");
 
 describe("Thermostat", () => {
-  it("has a starting temperature of 20", () => {
-    let thermostat = new Thermostat();
-    expect(thermostat.temperature).toBe(20);
+  let thermostat;
+
+  beforeEach(() => {
+    thermostat = new Thermostat();
   });
 
   it("can get a temperature", () => {
-    let thermostat = new Thermostat();
     expect(thermostat.getTemperature()).toBe(20);
   });
 
   it("can increase temperature by 1", () => {
-    let thermostat = new Thermostat();
     thermostat.up();
     expect(thermostat.getTemperature()).toBe(21);
   });
 
   it("can decrease temperature by 1", () => {
-    let thermostat = new Thermostat();
     thermostat.down();
     expect(thermostat.getTemperature()).toBe(19);
   });
 
-  it("can not decrease tempreture below minimum tempreture", () => {
-    let thermostat = new Thermostat();
+  it("can not decrease temperature below minimum temperature", () => {
     for (let i = 0; i < 11; i++) {
       thermostat.down();
     }
-
     expect(thermostat.getTemperature()).toBe(10);
   });
 
   it("starts with power saving mode on", () => {
-    let thermostat = new Thermostat();
     expect(thermostat.maximum).toBe(25);
   });
 
   it("will change maximum temperature to 32", () => {
-    let thermostat = new Thermostat();
     thermostat.setPowerSavingMode(false);
     expect(thermostat.maximum).toBe(32);
   });
 
-  it("can not increase tempreture more than maximum tempreture when power saving mode is on", () => {
-    let thermostat = new Thermostat();
+  it("can not increase temperature more than maximum temperature when power saving mode is on", () => {
     for (let i = 0; i < 6; i++) {
       thermostat.up();
     }
     expect(thermostat.getTemperature()).toBe(25);
   });
 
-  it("can not increase tempreture more than maximum tempreture when power saving mode is off", () => {
-    let thermostat = new Thermostat();
+  it("can not increase temperature more than maximum temperature when power saving mode is off", () => {
     thermostat.setPowerSavingMode(false);
     for (let i = 0; i < 13; i++) {
       thermostat.up();
@@ -61,7 +53,6 @@ describe("Thermostat", () => {
   });
 
   it("resets the temperature back to 20", () => {
-    let thermostat = new Thermostat();
     for (let i = 0; i < 3; i++) {
       thermostat.up();
     }
@@ -69,7 +60,6 @@ describe("Thermostat", () => {
   });
 
   it("has low energy usage", () => {
-    let thermostat = new Thermostat();
     for (let i = 0; i < 3; i++) {
       thermostat.down();
     }
@@ -77,7 +67,6 @@ describe("Thermostat", () => {
   });
 
   it("has medium energy usage", () => {
-    let thermostat = new Thermostat();
     for (let i = 0; i < 3; i++) {
       thermostat.up();
     }
@@ -85,7 +74,6 @@ describe("Thermostat", () => {
   });
 
   it("has high energy usage", () => {
-    let thermostat = new Thermostat();
     thermostat.setPowerSavingMode(false);
     for (let i = 0; i < 10; i++) {
       thermostat.up();
