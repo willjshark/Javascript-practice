@@ -1,3 +1,5 @@
+const { toThrowErrorMatchingSnapshot } = require("jest-snapshot");
+
 class Thermostat {
   constructor() {
     this.temperature = 20;
@@ -28,6 +30,8 @@ class Thermostat {
     }
     this.temperature -= 1;
   };
+
+  reset = () => (this.temperature = 20);
 }
 
 module.exports = Thermostat;

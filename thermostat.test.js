@@ -44,7 +44,7 @@ describe("Thermostat", () => {
     expect(thermostat.maximum).toBe(32);
   });
 
-  it("can not increase tempreture more than maximum tempreture", () => {
+  it("can not increase tempreture more than maximum tempreture when power saving mode is on", () => {
     let thermostat = new Thermostat();
     for (let i = 0; i < 6; i++) {
       thermostat.up();
@@ -52,12 +52,21 @@ describe("Thermostat", () => {
     expect(thermostat.getTemperature()).toBe(25);
   });
 
-  it("can not increase tempreture more than maximum tempreture", () => {
+  it("can not increase tempreture more than maximum tempreture when power saving mode is off", () => {
     let thermostat = new Thermostat();
     thermostat.setPowerSavingMode(false);
     for (let i = 0; i < 13; i++) {
       thermostat.up();
     }
     expect(thermostat.getTemperature()).toBe(32);
+  });
+
+  it("resets the temperature back to 20", () => {
+    let thermostat = new Thermostat();
+    for (let i = 0; i < 3; i++) {
+      thermostat.up();
+    }
+    thermostat.reset();
+    expect(thermostat.getTemperature()).toBe(20);
   });
 });
