@@ -2,21 +2,32 @@ class Thermostat {
   constructor() {
     this.temperature = 20;
     this.minimum = 10;
+    this.maximum = 25;
   }
 
   getTemperature = () => this.temperature;
 
-  up = () => this.temperature += 1;
+  setPowerSavingMode = (onOrOff) => {
+    if (onOrOff) {
+      this.maximum = 25;
+    } else {
+      this.maximum = 32;
+    }
+  };
 
-  down = () =>{ 
-    if(this.temperature === this.minimum) { 
-     return;
+  up = () => {
+    if (this.temperature === this.maximum) {
+      return;
+    }
+    this.temperature += 1;
+  };
+
+  down = () => {
+    if (this.temperature === this.minimum) {
+      return;
     }
     this.temperature -= 1;
-    }  
-
-  
-
+  };
 }
 
 module.exports = Thermostat;
