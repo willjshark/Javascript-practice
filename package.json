@@ -1,0 +1,22 @@
+{
+  "name": "thermostat-challenge--js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "thermostat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigii1992/Thermostat-challenge--JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sigii1992/Thermostat-challenge--JS/issues"
+  },
+  "homepage": "https://github.com/sigii1992/Thermostat-challenge--JS#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}
