@@ -1,4 +1,3 @@
-const { expect, it } = require("@jest/globals");
 const Thermostat = require("./thermostat");
 
 describe("Thermostat", () => {
@@ -12,13 +11,13 @@ describe("Thermostat", () => {
     expect(thermostat.getTemperature()).toBe(20);
   });
 
-  it("can increase tempreture by 1", () => {
+  it("can increase temperature by 1", () => {
     let thermostat = new Thermostat();
     thermostat.up();
     expect(thermostat.getTemperature()).toBe(21);
   });
 
-  it("can decrease tempreture by 1", () => {
+  it("can decrease temperature by 1", () => {
     let thermostat = new Thermostat();
     thermostat.down();
     expect(thermostat.getTemperature()).toBe(19);
@@ -66,7 +65,31 @@ describe("Thermostat", () => {
     for (let i = 0; i < 3; i++) {
       thermostat.up();
     }
-    thermostat.reset();
-    expect(thermostat.getTemperature()).toBe(20);
+    expect(thermostat.reset()).toBe(20);
+  });
+
+  it("has low energy usage", () => {
+    let thermostat = new Thermostat();
+    for (let i = 0; i < 3; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.energyUsage()).toBe("low-usage");
+  });
+
+  it("has medium energy usage", () => {
+    let thermostat = new Thermostat();
+    for (let i = 0; i < 3; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.energyUsage()).toBe("medium-usage");
+  });
+
+  it("has high energy usage", () => {
+    let thermostat = new Thermostat();
+    thermostat.setPowerSavingMode(false);
+    for (let i = 0; i < 10; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.energyUsage()).toBe("high-usage");
   });
 });
