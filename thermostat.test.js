@@ -1,7 +1,10 @@
 const { expect } = require("@jest/globals");
 const Thermostat = require("./thermostat");
 
+
+
 describe("Thermostat", () => {
+
   it("has a starting temperature of 20", () => {
     let thermostat = new Thermostat();
     expect(thermostat.temperature).toBe(20);
@@ -19,7 +22,18 @@ describe("Thermostat", () => {
 
   it('can decrease tempreture by 1', () => {
     let thermostat = new Thermostat();
-    expect(thermostat.down()).toBe(19);
+    thermostat.down()
+    expect(thermostat.getTemperature()).toBe(19);
   });
+ 
+  it('can not decrease tempreture below minimum tempreture', () => {
+    let thermostat = new Thermostat();
+   for(let i = 0; i < 11; i++) {
+   thermostat.down();
+   }
+
+   expect(thermostat.getTemperature()).toBe(10);
+  })
+
 
 });
