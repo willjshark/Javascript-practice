@@ -5,8 +5,6 @@ class Thermostat {
     this.maximum = 25;
   }
 
-  getTemperature = () => this.temperature;
-
   getTemperature = () =>
     this.temperature === this.maximum
       ? `${this.temperature} (maximum reached)`
