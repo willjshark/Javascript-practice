@@ -14,5 +14,12 @@ while (true) {
   } else if (command === "down") {
     thermostat.down();
     console.log(`Temperature is ${thermostat.getTemperature()}`);
+  } else if (command === "psm on") {
+    console.log(`Temperature is ${thermostat.getTemperature()}`);
+  } else if (command === "psm off") {
+    thermostat.setPowerSavingMode(false);
+    console.log(`Temperature is ${thermostat.getTemperature()}`);
+  } else if (command === "exit") {
+    break;
   }
 }

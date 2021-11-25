@@ -7,6 +7,11 @@ class Thermostat {
 
   getTemperature = () => this.temperature;
 
+  getTemperature = () =>
+    this.temperature === this.maximum
+      ? `${this.temperature} (maximum reached)`
+      : this.temperature;
+
   setPowerSavingMode = (onOrOff) =>
     onOrOff ? (this.maximum = 25) : (this.maximum = 32);
 
