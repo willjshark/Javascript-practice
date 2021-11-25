@@ -6,7 +6,6 @@ console.log(`Temperature is ${thermostat.getTemperature()}`);
 
 while (true) {
   let command = readlineSync.question("Enter command > ");
-  let result = `Temperature is ${thermostat.getTemperature()}`;
 
   if (command === "up") {
     thermostat.up();
