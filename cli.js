@@ -1,24 +1,11 @@
-const readlineSync = require("readline-sync");
-const Thermostat = require("./thermostat");
+let readlineSync = require('readline-sync');
+const Thermostat = require('./thermostat');
 
-let thermostat = new Thermostat();
-console.log(`Temperature is ${thermostat.getTemperature()}`);
+let command;
+const thermo = new Thermostat;
 
-while (true) {
-  let command = readlineSync.question("Enter command > ");
-
-  if (command === "up") {
-    thermostat.up();
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
-  } else if (command === "down") {
-    thermostat.down();
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
-  } else if (command === "psm on") {
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
-  } else if (command === "psm off") {
-    thermostat.setPowerSavingMode(false);
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
-  } else if (command === "exit") {
-    break;
-  }
-}
+while(command !== 'stop') {
+command = readlineSync.question('Enter your command. ');
+thermo.commandReader(command, thermo);
+console.log(thermo.getTemperature());
+};

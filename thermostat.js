@@ -36,6 +36,23 @@ class Thermostat {
       return "high-usage";
     }
   };
+    commandReader = (command,thermo) => {
+      if(command === 'up'){
+        return thermo.up();
+      }else if (command === 'down') {
+        return thermo.down();
+      }else if (command === 'psm on') {
+        thermo.setPowerSavingMode(true);
+        console.log('Power saving is now on');
+      }else if (command === 'psm off') {
+        thermo.setPowerSavingMode(false);
+        console.log('Power saving is now off');
+      }
+    };
+    
+  
 }
+
+
 
 module.exports = Thermostat;
